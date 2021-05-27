@@ -1,7 +1,7 @@
 pipeline { //starting the declarative pipeline 
   environment { //decalring some varibales in the environment to be used 
     dockerhub_path = "youssefbeshir/docker-test" // username and dockerhub repo name where docker image will be stored on DockerHub
-    docker_img_out = '' // variable to store the output of the build to be sent to dockerhub
+    docker_img_out = '' // empty variable to store the output of the build to be sent to dockerhub
     regPass = 'dockerhub' // credential ID for dcokerhub which has been configured in Jenkins credentials to access the repo
   }
   agent any // run all jobs in the stages
@@ -21,7 +21,7 @@ pipeline { //starting the declarative pipeline
     stage('Export Docker Image ...') { // stage 3: exporting the build (image) into dockerhub 
       steps{
         script {
-          docker.withRegistry( '', regPass ) { // access the dockerhub repo with the credentials we provided in Jenkins credentials, where the docker build will be stored 
+          docker.withRegistry( dockerhub_path, regPass ) { // access the dockerhub repo with the credentials we provided in Jenkins credentials, where the docker build will be stored 
             docker_img_out.push() // send the image created by docker.build() to dockerhub 
           }
         }

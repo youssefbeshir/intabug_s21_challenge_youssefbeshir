@@ -8,6 +8,7 @@
 
 4- After the build is successful the docker image is sent to dockerhub
 
+All errors in different stages will be reported by Jenkins.
 
 ALL DETAILS HAVE BEEN PROVIDED IN THE COMMENTS IN BOTH FILES [ JENKINS and DOCKER files ]
 
